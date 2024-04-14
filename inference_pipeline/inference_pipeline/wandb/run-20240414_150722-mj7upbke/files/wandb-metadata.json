@@ -1,0 +1,130 @@
+{
+    "os": "Linux-6.5.0-27-generic-x86_64-with-glibc2.38",
+    "python": "3.11.6",
+    "heartbeatAt": "2024-04-14T13:07:22.850111",
+    "startedAt": "2024-04-14T13:07:22.120151",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "main:app",
+        "--reload"
+    ],
+    "state": "running",
+    "program": "/home/adrien/.cache/pypoetry/virtualenvs/asn-rag-rkwzql5d-py3.11/bin/uvicorn",
+    "codePathLocal": null,
+    "git": {
+        "remote": null,
+        "commit": "25f8893433a440275afb88a8352a62f3e73e1c65"
+    },
+    "email": "adrien.bertheleme@gmail.com",
+    "root": "/home/adrien/Documents/Coding/ASN_RAG",
+    "host": "adrien-XPS-15-9500",
+    "username": "adrien",
+    "executable": "/home/adrien/.cache/pypoetry/virtualenvs/asn-rag-rkwzql5d-py3.11/bin/python",
+    "cpu_count": 8,
+    "cpu_count_logical": 16,
+    "cpu_freq": {
+        "current": 4099.99675,
+        "min": 800.0,
+        "max": 4600.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 4041.954,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 4090.611,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 4093.263,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 4093.253,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 4093.213,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3708.971,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3951.965,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 2822.956,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 2908.181,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 4093.274,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 4093.723,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 4092.512,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 4070.0,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 4085.297,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3990.356,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3361.602,
+            "min": 800.0,
+            "max": 4600.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 294.22930908203125,
+            "used": 36.1508903503418
+        }
+    },
+    "gpu": "NVIDIA GeForce RTX 3050 Laptop GPU",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce RTX 3050 Laptop GPU",
+            "memory_total": 4294967296
+        }
+    ],
+    "memory": {
+        "total": 31.061885833740234
+    }
+}

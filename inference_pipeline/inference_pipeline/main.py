@@ -9,10 +9,11 @@ import uvicorn
 from dotenv import load_dotenv
 from fastapi import FastAPI, Request, WebSocket, WebSocketDisconnect
 from fastapi.templating import Jinja2Templates
+from lm.lm import gpt_3_5_turbo, gpt_4_turbo
 from rag import RAG
 from utils.schemas import ChatResponse
 
-rag = RAG()
+rag = RAG(lm=gpt_3_5_turbo, final_writer=gpt_4_turbo)
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 

@@ -158,7 +158,7 @@ class TrainAPI:
         return trainer
 
     def _evaluate_sample(self, sample: dict, model: FastLanguageModel) -> str:
-        """evaluate _summary_
+        """evaluates on one example
 
         Args:
             sample (dict): sample from eval set
@@ -182,7 +182,7 @@ class TrainAPI:
         return predicted_answer
 
     def _evaluation(self, _model: FastLanguageModel) -> None:
-        """_evaluation Evaluates the model on the validation set
+        """Evaluates the model on the validation set
 
         Args:
             _model (FastLanguageModel): Model for inference

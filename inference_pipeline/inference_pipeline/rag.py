@@ -5,17 +5,15 @@ from typing import Tuple
 import dspy
 import wandb
 from dotenv import find_dotenv, load_dotenv
-from dsp.modules import Claude
-
-# from dsp.utils import deduplicate
+from dsp import LM
 from dspy.predict import Retry
 from dspy.retrieve.chromadb_rm import ChromadbRM
+
 from ragatouille import RAGPretrainedModel
 from utils.embeddings import HuggingFaceEmbeddingFunction
-from utils.hf_client_tgi import HFClientTGI
-from utils.unsloth_model import UnslothModel
 
 load_dotenv(find_dotenv())
+
 
 huggingface_ef = HuggingFaceEmbeddingFunction(
     api_key=os.getenv("HF_KEY"),
@@ -55,7 +53,7 @@ class GenerateCitedParagraph(dspy.Signature):
     reponse = dspy.OutputField(desc="inclus citations et liste les sources")
 
 
-class BasicRAG(dspy.Module):
+class MultiQueryRAG(dspy.Module):
     def __init__(self, reranker: RAGPretrainedModel, max_hops: int, final_writer) -> None:
         super().__init__()
         self.generate_query = [dspy.ChainOfThought(GenerateSearchQuery) for _ in range(max_hops)]
@@ -79,7 +77,7 @@ class BasicRAG(dspy.Module):
             passages = dspy.settings.rm.forward(
                 f"query: {query}"  # See https://huggingface.co/OrdalieTech/Solon-embeddings-large-0.1
             )
-            context = context + passages  # TODO Deduplicate
+            context = context + passages
         context = deduplicate(context)
         print(f"\nRetrieval took {time.time() - timer} s\n")
 
@@ -101,39 +99,9 @@ class BasicRAG(dspy.Module):
 
 
 class RAG:
-    def __init__(self) -> None:
-        # run = wandb.init()
-        # model = run.use_model("adrienb134/model-registry/croissant-asn-rag:production")
-
-        # self.lm = UnslothModel(model=artifact_dir)
-        # self.lm.kwargs["max_tokens"] = 300
-        # self.lm.kwargs["temperature"] = 0.2
-        # self.lm.kwargs["top_p"] = 0.95
-        # self.lm.kwargs["top_k"] = 60
-
-        self.lm = dspy.OpenAI(
-            model="gpt-3.5-turbo",
-            max_tokens=3800,
-            api_key=os.getenv("OPENAI_KEY"),
-        )
-        self.gpt4 = dspy.OpenAI(
-            model="gpt-4-0125-preview",
-            max_tokens=3800,
-            api_key=os.getenv("OPENAI_KEY"),
-        )
-        # self.lm = HFClientTGI(
-        #     model="occiglot/occiglot-7b-fr-en-instruct",
-        #     url="https://cbljfyw02b3p7c2u.us-east-1.aws.endpoints.huggingface.cloud",
-        #     port=8080,
-        #     token=os.getenv("HF_KEY"),
-        # )
-
-        # self.lm = dspy.Cohere(model="command-r-plus", max_tokens=4000, api_key=os.getenv("COHERE"))
-        # self.lm = Claude(
-        #     model="claude-3-opus-20240229",
-        #     api_key=os.getenv("CLAUDE"),
-        #     max_tokens=4096,
-        # )
+    def __init__(self, lm: LM, final_writer: LM) -> None:
+        self.lm = lm
+        self.final_writer = final_writer
         self.lm.drop_prompt_from_output = True
         self.rm = ChromadbRM(
             collection_name="ASN_test",
@@ -143,13 +111,14 @@ class RAG:
         )
         dspy.settings.configure(lm=self.lm, rm=self.rm)
         self.reranker = RAGPretrainedModel.from_pretrained("antoinelouis/colbertv2-camembert-L4-mmarcoFR")
-        self.pipe = BasicRAG(reranker=self.reranker, max_hops=2, final_writer=self.gpt4)
+        self.pipe = MultiQueryRAG(reranker=self.reranker, max_hops=2, final_writer=self.final_writer)
 
-    def query(self, question) -> None:
+    def query(self, question) -> Tuple[str, list]:
         answer, sources = self.pipe.forward(question)
         print(f"Réponse: {answer.reponse}")
         return answer.reponse, sources
 
+    # * For testing purposes
     def _retrieve(self, question):
         return self.rm.forward(question, k=7)
 
