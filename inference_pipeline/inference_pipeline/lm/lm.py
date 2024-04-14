@@ -21,6 +21,7 @@ ollama_lm = dspy.OllamaLocal(
     temperature=0.2,
     top_p=0.95,
     max_tokens=2000,
+    timeout_s=300,
 )
 
 gpt_3_5_turbo = dspy.OpenAI(
