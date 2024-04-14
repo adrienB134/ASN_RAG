@@ -15,6 +15,13 @@ load_dotenv(find_dotenv())
 # wandb_model.kwargs["top_p"] = 0.95
 # wandb_model.kwargs["top_k"] = 60
 
+ollama_lm = dspy.OllamaLocal(
+    model="command-r",
+    base_url="http://localhost:11434",
+    temperature=0.2,
+    top_p=0.95,
+    max_tokens=2000,
+)
 
 gpt_3_5_turbo = dspy.OpenAI(
     model="gpt-3.5-turbo",
