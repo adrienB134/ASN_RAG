@@ -1,0 +1,24 @@
+{
+    "name": "reasoning_question",
+    "instruction": "Complicate the given question by rewriting question into a multi-hop reasoning question based on the provided context.\n    Answering the question should require the reader to make multiple logical connections or inferences using the information available in given context.\n    Rules to follow when rewriting question:\n    1. Ensure that the rewritten question can be answered entirely from the information present in the contexts.\n    2. Do not frame questions that contains more than 15 words. Use abbreviation wherever possible.\n    3. Make sure the question is clear and unambiguous.\n    4. phrases like 'based on the provided context','according to the context',etc are not allowed to appear in the question.",
+    "output_format_instruction": "",
+    "examples": [
+        {
+            "question": "Quelle est la capitale de la France?",
+            "context": "La France est un pays d'Europe occidentale. Il a plusieurs villes, dont Paris, Lyon et Marseille. Paris est non seulement connue pour ses monuments culturels comme la Tour Eiffel et le Mus\u00e9e du Louvre, mais aussi comme centre administratif.",
+            "output": "Reliant la Tour Eiffel et le centre administratif, quelle ville se trouve \u00e0 la fois?"
+        },
+        {
+            "question": "Que fait la m\u00e9thode append() en Python?",
+            "context": "En Python, les listes sont utilis\u00e9es pour stocker plusieurs \u00e9l\u00e9ments dans une seule variable. Les listes sont l'un des 4 types de donn\u00e9es int\u00e9gr\u00e9s utilis\u00e9s pour stocker des collections de donn\u00e9es. La m\u00e9thode append() ajoute un seul \u00e9l\u00e9ment \u00e0 la fin d'une liste.",
+            "output": "Si une liste repr\u00e9sente une collection de variables, quelle m\u00e9thode l'\u00e9tend d'un \u00e9l\u00e9ment?"
+        }
+    ],
+    "input_keys": [
+        "question",
+        "context"
+    ],
+    "output_key": "output",
+    "output_type": "str",
+    "language": "french"
+}

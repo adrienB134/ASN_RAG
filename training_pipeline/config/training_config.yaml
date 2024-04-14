@@ -1,0 +1,23 @@
+training:
+  per_device_train_batch_size : 3
+  gradient_accumulation_steps : 4
+  gradient_checkpointing : True
+  warmup_ratio : 0.1
+  num_train_epochs : 2
+  learning_rate : 2e-5
+  logging_steps : 1
+  optim : "adamw_8bit"
+  weight_decay : 0.1
+  lr_scheduler_type : "linear"
+  seed : 3407
+  output_dir : ./outputs
+  report_to: wandb
+  load_best_model_at_end: False
+  evaluation_strategy: 'no'
+  push_to_hub: False
+model:
+  hf_repo: croissantllm/CroissantLLMChat-v0.1
+  max_seq_length: 2048
+  gradient_checkpointing: True
+dataset:
+  dataset_path: jpacifico/French-Alpaca-dataset-Instruct-110K

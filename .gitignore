@@ -1,0 +1,7 @@
+.env
+*/data/*
+.mypy_cache
+*.ipynb
+__pycache__
+artifacts
+*.log

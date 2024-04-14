@@ -1,0 +1,53 @@
+[tool.poetry]
+name = "inference-pipeline"
+version = "0.1.0"
+description = ""
+authors = ["Adrien <adrien.bertheleme@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+dspy-ai = {extras = ["chromadb"], version = "^2.4.0"}
+chromadb = "^0.4.24"
+fastapi = "^0.110.1"
+ragatouille = "^0.0.8.post2"
+python-dotenv = "^1.0.1"
+wandb = "^0.16.6"
+cohere = "^5.2.4"
+anthropic = "^0.23.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+
+[tool.ruff.isort]
+case-sensitive = true
+
+[tool.ruff.lint]
+select = [
+  # bugbear rules
+  "B",
+  "I",
+  # remove unused imports
+  "F401",
+  # bare except statements
+  "E722",
+  # unused arguments
+  "ARG",
+]
+ignore = [
+  "B006",
+  "B018",
+]
+
+unfixable = [
+  "T201",
+  "T203",
+]
+ignore-init-module-imports = true

@@ -1,0 +1,48 @@
+{
+    "name": "filter_question",
+    "instruction": "\nAsses the given question for clarity and answerability given enough domain knowledge, consider the following criteria:\n1.Independence: Can the question be understood and answered without needing additional context or access to external references not provided within the question itself? Questions should be self-contained, meaning they do not rely on specific documents, tables, or prior knowledge not shared within the question.\n2.Clear Intent: Is it clear what type of answer or information the question seeks? The question should convey its purpose without ambiguity, allowing for a direct and relevant response.\nBased on these criteria, assign a verdict of \"1\" if a question is specific, independent, and has a clear intent, making it understandable and answerable based on the details provided. Assign \"0\" if it fails to meet one or more of these criteria due to vagueness, reliance on external references, or ambiguity in intent.\nProvide feedback and a verdict in JSON format, including suggestions for improvement if the question is deemed unclear. Highlight aspects of the question that contribute to its clarity or lack thereof, and offer advice on how it could be reframed or detailed for better understanding and answerability.\n",
+    "output_format_instruction": "The output should be a well-formatted JSON instance that conforms to the JSON schema below.\n\nAs an example, for the schema {\"properties\": {\"foo\": {\"title\": \"Foo\", \"description\": \"a list of strings\", \"type\": \"array\", \"items\": {\"type\": \"string\"}}}, \"required\": [\"foo\"]}\nthe object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted instance of the schema. The object {\"properties\": {\"foo\": [\"bar\", \"baz\"]}} is not well-formatted.\n\nHere is the output JSON schema:\n```\n{\"type\": \"object\", \"properties\": {\"feedback\": {\"title\": \"Feedback\", \"type\": \"string\"}, \"verdict\": {\"title\": \"Verdict\", \"type\": \"integer\"}}, \"required\": [\"feedback\", \"verdict\"]}\n```\n\nDo not return any preamble or explanations, return only a pure JSON string surrounded by triple backticks (```).",
+    "examples": [
+        {
+            "question": "Quelle est la d\u00e9couverte \u00e0 propos de l'espace?",
+            "output": {
+                "feedback": "La question est trop vague et large, demandant une 'd\u00e9couverte sur l'espace' sans sp\u00e9cifier aucun aspect particulier, cadre temporel ou contexte d'int\u00e9r\u00eat. Cela pourrait se r\u00e9f\u00e9rer \u00e0 une large gamme de sujets, de la d\u00e9couverte de nouveaux corps c\u00e9lestes aux avanc\u00e9es dans la technologie de voyage spatial. Pour am\u00e9liorer la clart\u00e9 et la possibilit\u00e9 de r\u00e9ponse, la question pourrait sp\u00e9cifier le type de d\u00e9couverte (par exemple, astronomique, technologique), le cadre temporel (par exemple, r\u00e9cent, historique) ou le contexte (par exemple, dans une \u00e9tude de recherche sp\u00e9cifique ou une mission spatiale).",
+                "verdict": 0
+            }
+        },
+        {
+            "question": "Comment ALMA-13B-R se comporte-t-il par rapport aux autres mod\u00e8les de traduction dans l'\u00e9tude WMT'23, en fonction des r\u00e9sultats dans le contexte1 et le contexte2?",
+            "output": {
+                "feedback": "Cette question demande une comparaison des performances du mod\u00e8le ALMA-13B-R par rapport \u00e0 d'autres mod\u00e8les de traduction dans l'\u00e9tude WMT'23, se r\u00e9f\u00e9rant sp\u00e9cifiquement aux r\u00e9sultats dans 'context1' et 'context2'. Bien qu'elle sp\u00e9cifie clairement le mod\u00e8le d'int\u00e9r\u00eat (ALMA-13B-R) et l'\u00e9tude (WMT'23), elle suppose l'acc\u00e8s \u00e0 et la compr\u00e9hension de 'context1' et 'context2' sans expliquer ce que ces contextes impliquent. Cela rend la question peu claire pour ceux qui ne sont pas familiers avec l'\u00e9tude WMT'23 ou ces contextes sp\u00e9cifiques. Pour am\u00e9liorer la clart\u00e9 et la possibilit\u00e9 de r\u00e9ponse pour un public plus large, la question pourrait b\u00e9n\u00e9ficier de la d\u00e9finition ou de la description de 'context1' et 'context2' ou de l'explication des crit\u00e8res utilis\u00e9s pour la comparaison dans ces contextes.",
+                "verdict": 0
+            }
+        },
+        {
+            "question": "Comment KIWI-XXL et XCOMET se comparent-ils aux r\u00e9f\u00e9rences standard d'or dans le tableau 1 en termes de scores d'\u00e9valuation, de performances du mod\u00e8le de traduction et de taux de r\u00e9ussite pour surpasser les r\u00e9f\u00e9rences?",
+            "output": {
+                "feedback": "La question demande une comparaison entre les mod\u00e8les KIWI-XXL et XCOMET et les r\u00e9f\u00e9rences standard d'or dans le 'Tableau 1', en se concentrant sur les scores d'\u00e9valuation, les performances du mod\u00e8le de traduction et les taux de r\u00e9ussite pour surpasser les r\u00e9f\u00e9rences. Elle sp\u00e9cifie les mod\u00e8les et les crit\u00e8res de comparaison, rendant l'intention claire. Cependant, la question suppose l'acc\u00e8s au 'Tableau 1' sans en fournir le contenu ou le contexte, ce qui la rend peu claire pour ceux qui n'ont pas un acc\u00e8s direct au mat\u00e9riel source. Pour \u00eatre plus claire et plus r\u00e9pondable pour un public g\u00e9n\u00e9ral, la question pourrait inclure une br\u00e8ve description du contenu ou des principales conclusions du 'Tableau 1', ou alternativement, formuler la question d'une mani\u00e8re qui ne d\u00e9pend pas de documents sp\u00e9cifiques non publi\u00e9s.",
+                "verdict": 0
+            }
+        },
+        {
+            "question": "\"Quelle est la configuration de l'objectif de formation UL2 dans OpenMoE et pourquoi est-ce un meilleur choix pour la pr\u00e9-formation?\"",
+            "output": {
+                "feedback": "La question demande la configuration de l'objectif de formation UL2 dans le cadre OpenMoE et la justification de son ad\u00e9quation pour la pr\u00e9-formation. Elle est claire en pr\u00e9cisant le sujet d'int\u00e9r\u00eat (objectif de formation UL2, OpenMoE) et cherche des informations d\u00e9taill\u00e9es sur la configuration et les raisons de son efficacit\u00e9 en pr\u00e9-formation. Cependant, la question pourrait \u00eatre difficile pour ceux qui ne sont pas familiers avec la terminologie sp\u00e9cifique ou le contexte d'OpenMoE et UL2. Pour une plus grande clart\u00e9 et une r\u00e9ponse plus facile, il serait utile que la question inclue une br\u00e8ve explication ou un contexte sur OpenMoE et l'objectif de formation UL2, ou clarifie les aspects de l'efficacit\u00e9 de la pr\u00e9-formation auxquels elle se r\u00e9f\u00e8re (par exemple, efficacit\u00e9, pr\u00e9cision, g\u00e9n\u00e9ralisation).",
+                "verdict": 1
+            }
+        },
+        {
+            "question": "Quelle est la configuration d\u00e9taill\u00e9e de l'objectif de formation UL2 dans OpenMoE, en fonction du contexte fourni?",
+            "output": {
+                "feedback": "La question cherche des informations d\u00e9taill\u00e9es sur la configuration de l'objectif de formation UL2 dans le cadre OpenMoE, mentionnant 'le contexte fourni' sans r\u00e9ellement inclure ou d\u00e9crire ce contexte dans la requ\u00eate. Cela rend la question peu claire pour ceux qui n'ont pas acc\u00e8s au contexte non sp\u00e9cifi\u00e9. Pour que la question soit claire et r\u00e9pondable, elle doit soit inclure le contexte pertinent directement dans la question, soit \u00eatre formul\u00e9e d'une mani\u00e8re qui ne n\u00e9cessite pas d'informations externes. D\u00e9taillez les aspects sp\u00e9cifiques de la configuration d'int\u00e9r\u00eat (par exemple, les fonctions de perte, les techniques d'augmentation de donn\u00e9es) pourrait \u00e9galement aider \u00e0 clarifier la requ\u00eate.",
+                "verdict": 0
+            }
+        }
+    ],
+    "input_keys": [
+        "question"
+    ],
+    "output_key": "output",
+    "output_type": "json",
+    "language": "french"
+}

@@ -1,0 +1,29 @@
+{
+    "name": "seed_question",
+    "instruction": "Generate a question that can be fully answered from given context. The question should be formed using topic",
+    "output_format_instruction": "",
+    "examples": [
+        {
+            "context": "La photosynth\u00e8se chez les plantes implique la conversion de l'\u00e9nergie lumineuse en \u00e9nergie chimique, en utilisant la chlorophylle et d'autres pigments pour absorber la lumi\u00e8re. Ce processus est crucial pour la croissance des plantes et la production d'oxyg\u00e8ne.",
+            "keyphrase": "Photosynth\u00e8se",
+            "question": "Quel est le r\u00f4le de la photosynth\u00e8se dans la croissance des plantes?"
+        },
+        {
+            "context": "La R\u00e9volution industrielle, commen\u00e7ant au 18\u00e8me si\u00e8cle, a marqu\u00e9 un tournant majeur dans l'histoire car elle a conduit au d\u00e9veloppement des usines et \u00e0 l'urbanisation.",
+            "keyphrase": "R\u00e9volution industrielle",
+            "question": "Comment la R\u00e9volution industrielle a-t-elle marqu\u00e9 un tournant majeur dans l'histoire?"
+        },
+        {
+            "context": "Le processus d'\u00e9vaporation joue un r\u00f4le crucial dans le cycle de l'eau, transformant l'eau de l'\u00e9tat liquide \u00e0 l'\u00e9tat de vapeur et lui permettant de monter dans l'atmosph\u00e8re.",
+            "keyphrase": "\u00c9vaporation",
+            "question": "Pourquoi l'\u00e9vaporation est-elle importante dans le cycle de l'eau?"
+        }
+    ],
+    "input_keys": [
+        "context",
+        "keyphrase"
+    ],
+    "output_key": "question",
+    "output_type": "str",
+    "language": "french"
+}

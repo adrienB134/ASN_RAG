@@ -1,0 +1,40 @@
+{
+    "name": "score_context",
+    "instruction": "\n    Given a context, perform the following task and output the answer in VALID JSON format: Assess the provided context and assign a numerical score of 1 (Low), 2 (Medium), or 3 (High) for each of the following criteria in your JSON response:\n\nclarity: Evaluate the precision and understandability of the information presented. High scores (3) are reserved for contexts that are both precise in their information and easy to understand. Low scores (1) are for contexts where the information is vague or hard to comprehend.\ndepth: Determine the level of detailed examination and the inclusion of innovative insights within the context. A high score indicates a comprehensive and insightful analysis, while a low score suggests a superficial treatment of the topic.\nstructure: Assess how well the content is organized and whether it flows logically. High scores are awarded to contexts that demonstrate coherent organization and logical progression, whereas low scores indicate a lack of structure or clarity in progression.\nrelevance: Judge the pertinence of the content to the main topic, awarding high scores to contexts tightly focused on the subject without unnecessary digressions, and low scores to those that are cluttered with irrelevant information.\nStructure your JSON output to reflect these criteria as keys with their corresponding scores as values\n    ",
+    "output_format_instruction": "The output should be a well-formatted JSON instance that conforms to the JSON schema below.\n\nAs an example, for the schema {\"properties\": {\"foo\": {\"title\": \"Foo\", \"description\": \"a list of strings\", \"type\": \"array\", \"items\": {\"type\": \"string\"}}}, \"required\": [\"foo\"]}\nthe object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted instance of the schema. The object {\"properties\": {\"foo\": [\"bar\", \"baz\"]}} is not well-formatted.\n\nHere is the output JSON schema:\n```\n{\"type\": \"object\", \"properties\": {\"clarity\": {\"title\": \"Clarity\", \"type\": \"integer\"}, \"depth\": {\"title\": \"Depth\", \"type\": \"integer\"}, \"structure\": {\"title\": \"Structure\", \"type\": \"integer\"}, \"relevance\": {\"title\": \"Relevance\", \"type\": \"integer\"}}, \"required\": [\"clarity\", \"depth\", \"structure\", \"relevance\"]}\n```\n\nDo not return any preamble or explanations, return only a pure JSON string surrounded by triple backticks (```).",
+    "examples": [
+        {
+            "context": "The Pythagorean theorem is a fundamental principle in geometry. It states that in a right triangle, the square of the length of the hypotenuse (the side opposite the right angle) is equal to the sum of the squares of the lengths of the other two sides. This can be written as a^2 + b^2 = c^2 where c represents the length of the hypotenuse, and a and b represent the lengths of the other two sides.",
+            "output": {
+                "clarity": "3",
+                "depth": "1",
+                "structure": "3",
+                "relevance": "3"
+            }
+        },
+        {
+            "context": "Albert Einstein (14 mars 1879 - 18 avril 1955) \u00e9tait un physicien th\u00e9orique d'origine allemande qui est largement consid\u00e9r\u00e9 comme l'un des plus grands et des plus influents scientifiques de tous les temps.",
+            "output": {
+                "clarity": "clart\u00e9",
+                "depth": "profondeur",
+                "structure": "structure",
+                "relevance": "pertinence"
+            }
+        },
+        {
+            "context": "J'adore le chocolat. C'est vraiment d\u00e9licieux. Oh, et au fait, la terre tourne autour du soleil, pas l'inverse. Aussi, ma couleur pr\u00e9f\u00e9r\u00e9e est le bleu.",
+            "output": {
+                "clarity": 2,
+                "depth": 1,
+                "structure": 1,
+                "relevance": 1
+            }
+        }
+    ],
+    "input_keys": [
+        "context"
+    ],
+    "output_key": "output",
+    "output_type": "json",
+    "language": "french"
+}

@@ -1,0 +1,21 @@
+{
+    "name": "compress_question",
+    "instruction": "Rewrite the following question to make it more indirect and shorter while retaining the essence of the original question.\n    The goal is to create a question that conveys the same meaning but in a less direct manner. The rewritten question should shorter so use abbreviation wherever possible.",
+    "output_format_instruction": "",
+    "examples": [
+        {
+            "question": "Quelle est la distance entre la Terre et la Lune?",
+            "output": "\u00c0 quelle distance se trouve la Lune de la Terre?"
+        },
+        {
+            "question": "Quels ingr\u00e9dients sont n\u00e9cessaires pour faire un g\u00e2teau au chocolat?",
+            "output": "De quoi a-t-on besoin pour un g\u00e2teau au chocolat?"
+        }
+    ],
+    "input_keys": [
+        "question"
+    ],
+    "output_key": "output",
+    "output_type": "str",
+    "language": "french"
+}

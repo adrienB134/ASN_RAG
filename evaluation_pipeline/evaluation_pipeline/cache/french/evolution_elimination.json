@@ -1,0 +1,38 @@
+{
+    "name": "evolution_elimination",
+    "instruction": "Check if the given two questions are equal based on following requirements:\n    1. They have same constraints and requirements.\n    2. They have same depth and breadth of the inquiry.\n    Output verdict as 1 if they are equal and 0 if they are not",
+    "output_format_instruction": "The output should be a well-formatted JSON instance that conforms to the JSON schema below.\n\nAs an example, for the schema {\"properties\": {\"foo\": {\"title\": \"Foo\", \"description\": \"a list of strings\", \"type\": \"array\", \"items\": {\"type\": \"string\"}}}, \"required\": [\"foo\"]}\nthe object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted instance of the schema. The object {\"properties\": {\"foo\": [\"bar\", \"baz\"]}} is not well-formatted.\n\nHere is the output JSON schema:\n```\n{\"type\": \"object\", \"properties\": {\"reason\": {\"title\": \"Reason\", \"type\": \"string\"}, \"verdict\": {\"title\": \"Verdict\", \"type\": \"integer\"}}, \"required\": [\"reason\", \"verdict\"]}\n```\n\nDo not return any preamble or explanations, return only a pure JSON string surrounded by triple backticks (```).",
+    "examples": [
+        {
+            "question1": "Quelles sont les causes principales du changement climatique?",
+            "question2": "Quels facteurs contribuent au r\u00e9chauffement climatique?",
+            "output": {
+                "reason": "Bien que les deux questions traitent des probl\u00e8mes environnementaux, 'changement climatique' englobe des changements plus larges que 'r\u00e9chauffement climatique', conduisant \u00e0 diff\u00e9rentes profondeurs d'enqu\u00eate.",
+                "verdict": 0
+            }
+        },
+        {
+            "question1": "Comment fonctionne la photosynth\u00e8se chez les plantes?",
+            "question2": "Pouvez-vous expliquer le processus de la photosynth\u00e8se chez les plantes?",
+            "output": {
+                "reason": "Les deux questions demandent une explication du processus de photosynth\u00e8se chez les plantes, partageant la m\u00eame profondeur, largeur et exigences pour la r\u00e9ponse.",
+                "verdict": 1
+            }
+        },
+        {
+            "question1": "Quels sont les avantages pour la sant\u00e9 de l'exercice r\u00e9gulier?",
+            "question2": "Pouvez-vous \u00e9num\u00e9rer les avantages de l'exercice r\u00e9gulier pour la sant\u00e9?",
+            "output": {
+                "reason": "Les deux questions cherchent des informations sur les effets positifs de l\u2019exercice r\u00e9gulier sur la sant\u00e9. Ils n\u00e9cessitent un niveau de d\u00e9tail similaire dans la liste des avantages pour la sant\u00e9.",
+                "verdict": 1
+            }
+        }
+    ],
+    "input_keys": [
+        "question1",
+        "question2"
+    ],
+    "output_key": "output",
+    "output_type": "json",
+    "language": "french"
+}

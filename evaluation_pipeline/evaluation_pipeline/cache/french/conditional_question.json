@@ -1,0 +1,24 @@
+{
+    "name": "conditional_question",
+    "instruction": "Rewrite the provided question to increase its complexity by introducing a conditional element.\n    The goal is to make the question more intricate by incorporating a scenario or condition that affects the context of the question.\n    Follow the rules given below while rewriting the question.\n        1. The rewritten question should not be longer than 25 words. Use abbreviation wherever possible.\n        2. The rewritten question must be reasonable and must be understood and responded by humans.\n        3. The rewritten question must be fully answerable from information present context.\n        4. phrases like 'provided context','according to the context?',etc are not allowed to appear in the question.",
+    "output_format_instruction": "",
+    "examples": [
+        {
+            "question": "Quelle est la fonction des racines d'une plante?",
+            "context": "Les racines d'une plante absorbent l'eau et les nutriments du sol, ancrent la plante dans le sol et stockent la nourriture.",
+            "output": "Quel double objectif les racines des plantes servent-elles en ce qui concerne les nutriments du sol et la stabilit\u00e9?"
+        },
+        {
+            "question": "Comment les vaccins prot\u00e8gent-ils contre les maladies?",
+            "context": "Les vaccins prot\u00e8gent contre les maladies en stimulant la r\u00e9ponse immunitaire du corps pour produire des anticorps, qui reconnaissent et combattent les agents pathog\u00e8nes.",
+            "output": "Comment les vaccins utilisent-ils le syst\u00e8me immunitaire du corps pour se d\u00e9fendre contre les agents pathog\u00e8nes?"
+        }
+    ],
+    "input_keys": [
+        "question",
+        "context"
+    ],
+    "output_key": "output",
+    "output_type": "str",
+    "language": "french"
+}

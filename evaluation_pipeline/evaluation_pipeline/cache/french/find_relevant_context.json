@@ -1,0 +1,34 @@
+{
+    "name": "find_relevant_context",
+    "instruction": "Given a question and set of contexts, find the most relevant contexts to answer the question.",
+    "output_format_instruction": "",
+    "examples": [
+        {
+            "question": "Quelle est la capitale de la France?",
+            "contexts": "['1. La France est un pays d'Europe de l'Ouest. Elle compte plusieurs villes, dont Paris, Lyon et Marseille. Paris est non seulement connue pour ses monuments culturels comme la Tour Eiffel et le Mus\u00e9e du Louvre, mais aussi en tant que centre administratif.', '2. La capitale de la France est Paris. C'est aussi la ville la plus peupl\u00e9e de France, avec une population de plus de 2 millions de personnes. Paris est connue pour ses monuments culturels comme la Tour Eiffel et le Mus\u00e9e du Louvre.', '3. Paris est la capitale de la France. C'est aussi la ville la plus peupl\u00e9e de France, avec une population de plus de 2 millions de personnes. Paris est connue pour ses monuments culturels comme la Tour Eiffel et le Mus\u00e9e du Louvre.']",
+            "output": {
+                "relevant_contexts": [
+                    1,
+                    2
+                ]
+            }
+        },
+        {
+            "question": "\"Comment la caf\u00e9ine affecte-t-elle le corps et quelles sont ses sources courantes?\"",
+            "contexts": "['1. La caf\u00e9ine est un stimulant du syst\u00e8me nerveux central. Elle peut temporairement repousser la somnolence et restaurer la vigilance. Elle affecte principalement le cerveau, o\u00f9 elle modifie la fonction des neurotransmetteurs.', '2. Une activit\u00e9 physique r\u00e9guli\u00e8re est essentielle pour maintenir une bonne sant\u00e9. Elle peut aider \u00e0 contr\u00f4ler le poids, combattre les probl\u00e8mes de sant\u00e9, stimuler l'\u00e9nergie et favoriser un meilleur sommeil.', '3. Les sources courantes de caf\u00e9ine comprennent le caf\u00e9, le th\u00e9, le cola et les boissons \u00e9nerg\u00e9tiques. Ces boissons sont consomm\u00e9es dans le monde entier et sont connues pour fournir un coup de pouce rapide d'\u00e9nergie.']",
+            "output": {
+                "relevant_contexts": [
+                    1,
+                    2
+                ]
+            }
+        }
+    ],
+    "input_keys": [
+        "question",
+        "contexts"
+    ],
+    "output_key": "output",
+    "output_type": "json",
+    "language": "french"
+}

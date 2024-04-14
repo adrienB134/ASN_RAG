@@ -1,0 +1,38 @@
+{
+    "name": "answer_formulate",
+    "instruction": "Answer the question using the information from the given context. Output verdict as '1' if answer is present '-1' if answer is not present in the context.",
+    "output_format_instruction": "",
+    "examples": [
+        {
+            "context": "Le changement climatique est significativement influenc\u00e9 par les activit\u00e9s humaines, notamment l'\u00e9mission de gaz \u00e0 effet de serre provenant de la combustion des combustibles fossiles. L'augmentation de la concentration de gaz \u00e0 effet de serre dans l'atmosph\u00e8re pi\u00e8ge plus de chaleur, conduisant au r\u00e9chauffement climatique et \u00e0 des changements dans les mod\u00e8les m\u00e9t\u00e9orologiques.",
+            "question": "Comment les activit\u00e9s humaines contribuent-elles au changement climatique?",
+            "answer": {
+                "answer": "Les activit\u00e9s humaines contribuent au changement climatique principalement par l'\u00e9mission de gaz \u00e0 effet de serre provenant de la combustion des combustibles fossiles. Ces \u00e9missions augmentent la concentration de gaz \u00e0 effet de serre dans l'atmosph\u00e8re, ce qui pi\u00e8ge plus de chaleur et conduit au r\u00e9chauffement climatique et \u00e0 la modification des mod\u00e8les m\u00e9t\u00e9orologiques.",
+                "verdict": "1"
+            }
+        },
+        {
+            "context": "Le concept d'intelligence artificielle (IA) a \u00e9volu\u00e9 avec le temps, mais il se r\u00e9f\u00e8re fondamentalement \u00e0 des machines con\u00e7ues pour imiter les fonctions cognitives humaines. L'IA peut apprendre, raisonner, percevoir et, dans certains cas, r\u00e9agir comme les humains, ce qui la rend essentielle dans des domaines allant de la sant\u00e9 aux v\u00e9hicules autonomes.",
+            "question": "Quelles sont les principales capacit\u00e9s de l'intelligence artificielle?",
+            "answer": {
+                "answer": "L'intelligence artificielle est con\u00e7ue pour imiter les fonctions cognitives humaines, avec des capacit\u00e9s cl\u00e9s incluant l'apprentissage, le raisonnement, la perception et la r\u00e9action \u00e0 l'environnement de mani\u00e8re similaire aux humains. Ces capacit\u00e9s rendent l'IA cruciale dans divers domaines, y compris les soins de sant\u00e9 et la conduite autonome.",
+                "verdict": "1"
+            }
+        },
+        {
+            "context": "Le roman \"Pride and Prejudice\" de Jane Austen tourne autour du personnage d'Elizabeth Bennet et de sa famille. L'histoire se d\u00e9roule au 19\u00e8me si\u00e8cle dans l'Angleterre rurale et traite des questions de mariage, de moralit\u00e9 et de malentendus.",
+            "question": "\"En quelle ann\u00e9e 'Orgueil et Pr\u00e9jug\u00e9s' a-t-il \u00e9t\u00e9 publi\u00e9?\"",
+            "answer": {
+                "answer": "La r\u00e9ponse \u00e0 la question donn\u00e9e n'est pas pr\u00e9sente dans le contexte",
+                "verdict": "-1"
+            }
+        }
+    ],
+    "input_keys": [
+        "context",
+        "question"
+    ],
+    "output_key": "answer",
+    "output_type": "json",
+    "language": "french"
+}

@@ -1,0 +1,27 @@
+{
+    "name": "multi_context_question",
+    "instruction": "\n    The task is to rewrite and complicate the given question in a way that answering it requires information derived from both context1 and context2. \n    Follow the rules given below while rewriting the question.\n        1. The rewritten question should not be very long. Use abbreviation wherever possible.\n        2. The rewritten question must be reasonable and must be understood and responded by humans.\n        3. The rewritten question must be fully answerable from information present in context1 and context2. \n        4. Read and understand both contexts and rewrite the question so that answering requires insight from both context1 and context2.\n        5. phrases like 'based on the provided context','according to the context?',etc are not allowed to appear in the question.",
+    "output_format_instruction": "",
+    "examples": [
+        {
+            "question": "Quel processus rend les plantes vertes?",
+            "context1": "La chlorophylle est le pigment qui donne aux plantes leur couleur verte et les aide \u00e0 photosynth\u00e9tiser.",
+            "context2": "La photosynth\u00e8se chez les plantes se produit g\u00e9n\u00e9ralement dans les feuilles o\u00f9 les chloroplastes sont concentr\u00e9s.",
+            "output": "Dans quelles structures v\u00e9g\u00e9tales le pigment responsable de leur verdure facilite-t-il la production d'\u00e9nergie?"
+        },
+        {
+            "question": "Comment calculez-vous l'aire d'un rectangle?",
+            "context1": "La superficie d'une forme est calcul\u00e9e en fonction des dimensions de la forme. Pour les rectangles, cela implique de multiplier la longueur et la largeur.",
+            "context2": "Les rectangles ont quatre c\u00f4t\u00e9s avec des c\u00f4t\u00e9s oppos\u00e9s de longueurs \u00e9gales. Ils sont un type de quadrilat\u00e8re.",
+            "output": "Quelle multiplication impliquant des oppos\u00e9s \u00e9gaux donne l'aire d'un quadrilat\u00e8re?"
+        }
+    ],
+    "input_keys": [
+        "question",
+        "context1",
+        "context2"
+    ],
+    "output_key": "output",
+    "output_type": "str",
+    "language": "french"
+}
