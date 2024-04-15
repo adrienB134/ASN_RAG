@@ -6,6 +6,7 @@ from dotenv import find_dotenv, load_dotenv
 from dsp.modules import Claude
 from utils.hf_client_tgi import HFClientTGI
 from utils.unsloth_model import UnslothModel
+from dsp.modules.hf_client import HFClientVLLM
 
 load_dotenv(find_dotenv())
 
@@ -45,6 +46,7 @@ occiglot_tgi = HFClientTGI(
     token=os.getenv("HF_KEY"),
 )
 
+croissant_vllm = HFClientVLLM(model="croissantllm/CroissantCool-v0.2", port=8000)
 
 cohere = dspy.Cohere(model="command-r-plus", max_tokens=4000, api_key=os.getenv("COHERE"))
 

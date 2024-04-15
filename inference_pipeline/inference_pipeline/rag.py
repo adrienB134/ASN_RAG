@@ -110,7 +110,7 @@ class RAG:
             k=20,
         )
         dspy.settings.configure(lm=self.lm, rm=self.rm)
-        self.reranker = RAGPretrainedModel.from_pretrained("antoinelouis/colbertv2-camembert-L4-mmarcoFR")
+        self.reranker = RAGPretrainedModel.from_pretrained("AdrienB134/ColBERTv2.0-mmarcoFR")
         self.pipe = MultiQueryRAG(reranker=self.reranker, max_hops=2, final_writer=self.final_writer)
 
     def query(self, question) -> Tuple[str, list]:
