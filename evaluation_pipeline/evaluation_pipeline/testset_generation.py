@@ -49,4 +49,4 @@ testset = generator.generate_with_langchain_docs(
 
 testset = testset.to_dataset()
 
-testset.push_to_hub(repo_id="AdrienB134/testset_asn_rag", api_key=os.environ["HF"])
+testset.push_to_hub(repo_id="AdrienB134/testset_asn_rag", token=os.environ["HF_KEY"])
