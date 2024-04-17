@@ -64,37 +64,29 @@ class MultiQueryRAG(dspy.Module):
         self.final_writer = final_writer
 
     def forward(self, question: str) -> Tuple[dspy.Prediction, list]:
-        timer = time.time()
-        print("retrieving!")
         context = []
         for hop in range(self.max_hops):
             query = self.generate_query[hop](
                 context=[c["long_text"] for c in context],
                 question=question,
             ).query
-            print(query)
 
             passages = dspy.settings.rm.forward(
                 f"query: {query}"  # See https://huggingface.co/OrdalieTech/Solon-embeddings-large-0.1
             )
             context = context + passages
         context = deduplicate(context)
-        print(f"\nRetrieval took {time.time() - timer} s\n")
 
-        timer = time.time()
-        print("reranking!")
         reranked_context = self.reranker.rerank(query, [a["long_text"] for a in context], k=10)
 
         for a, b in zip(reranked_context, [a["metadatas"]["Source"] for a in context]):
             a["source"] = b
 
-        print(f"\nReranking took {time.time() - timer} s\n")
-
-        timer = time.time()
         with dspy.context(lm=self.final_writer):
             pred = self.generate_cited_paragraph(context=context, question=question)
-        print(f"\nGeneration took {time.time() - timer} s\n")
+
         answer = dspy.Prediction(contexte=context, reponse=pred.reponse)
+
         return answer, reranked_context
 
 
@@ -115,7 +107,6 @@ class RAG:
 
     def query(self, question) -> Tuple[str, list]:
         answer, sources = self.pipe.forward(question)
-        print(f"Réponse: {answer.reponse}")
         return answer.reponse, sources
 
     # * For testing purposes
